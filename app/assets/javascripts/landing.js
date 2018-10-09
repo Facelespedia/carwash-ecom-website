@@ -9,7 +9,7 @@
 
   CarWash.App = CarWash.App || {};
 
-  CarWash.App.Test = {
+  CarWash.App.Landing = {
     Init: function () {
       console.log('test')
     }

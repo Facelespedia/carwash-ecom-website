@@ -9,7 +9,7 @@ var ready = function() {
   CarWash.App = CarWash.App || {};
 
   CarWash.Init = (function() {
-    CarWash.App.Test.Init();
+    CarWash.App.Landing.Init();
   })();
 };
 

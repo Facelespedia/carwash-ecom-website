@@ -4,7 +4,7 @@
 //= require jquery3
 
 // Modules
-//= require ./test
+//= require ./landing
 
 // Application
 //= require ./app
