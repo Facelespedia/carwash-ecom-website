@@ -6,6 +6,7 @@ ruby '2.5.0'
 # Backend
 gem 'rails', '~> 5.2.1'
 gem 'puma', '~> 3.11'
+gem 'pg', '~> 1.1', '>= 1.1.3'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'
