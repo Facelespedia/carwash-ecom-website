@@ -11,9 +11,9 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
 
 # Frontend
-gem 'sass-rails', '~> 5.0'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'sass-rails', '~> 5.0'
 
 # Epics
 gem 'bootsnap', '>= 1.1.0', require: false
