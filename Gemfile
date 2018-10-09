@@ -30,7 +30,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   #rubocop
-  gem 'rubocop', '~> 0.59.2'
+  gem 'rubocop', '~> 0.59.2', require: false
 end
 
 group :test do
