@@ -53,8 +53,7 @@ group :test do
 
   # Capybara
   gem 'capybara'
-  gem 'capybara-selenium'
-  gem 'chromedriver-helper'
+  gem 'capybara-screenshot'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
