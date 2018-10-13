@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from fae (originally 20141021184311)
 class CreateFaePages < ActiveRecord::Migration[4.2]
   def change

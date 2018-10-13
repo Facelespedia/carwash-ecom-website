@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fae
   module NavigationConcern
     extend ActiveSupport::Concern
@@ -28,6 +30,5 @@ module Fae
         # scaffold inject marker
       ]
     end
-
   end
 end

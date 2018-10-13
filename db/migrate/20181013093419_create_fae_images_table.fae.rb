@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from fae (originally 20141008180718)
 class CreateFaeImagesTable < ActiveRecord::Migration[4.2]
   def change

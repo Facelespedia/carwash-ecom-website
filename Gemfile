@@ -9,7 +9,6 @@ ruby '2.5.0'
 gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
-gem 'fae-rails', '~> 2.0'
 
 # Frontend
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
@@ -18,6 +17,7 @@ gem 'sass-rails', '~> 5.0'
 
 # Epics
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'fae-rails', '~> 2.0'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
@@ -38,11 +38,22 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  # RSpec
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers', '~> 3.1'
+
+  # SimpleCov
+  gem 'simplecov', require: false
+
+  # Capybara
+  gem 'capybara'
+  gem 'capybara-screenshot'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
