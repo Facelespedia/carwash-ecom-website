@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
-require 'selenium/webdriver'
-
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 
 Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w(headless disable-gpu) },
-  )
-
-  Capybara::Selenium::Driver.new app,
-    browser: :chrome,
-    desired_capabilities: capabilities
+  Capybara::RackTest::Driver.new(app, browser: :chrome)
+  Capybara.ignore_hidden_elements = true
 end
 
-Capybara.javascript_driver = :headless_chrome
+Capybara::Screenshot.register_driver(:headless_chrome) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
