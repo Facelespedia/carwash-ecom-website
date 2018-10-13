@@ -19,6 +19,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'fae-rails', '~> 2.0'
 gem 'turbolinks', '~> 5'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
