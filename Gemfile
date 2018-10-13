@@ -9,6 +9,7 @@ ruby '2.5.0'
 gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
+gem 'fae-rails', '~> 2.0'
 
 # Frontend
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
