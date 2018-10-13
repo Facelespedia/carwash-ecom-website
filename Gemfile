@@ -41,9 +41,6 @@ end
 group :test do
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
-
   # RSpec
   gem 'rspec-rails', '~> 3.8'
   gem 'rspec_junit_formatter'
