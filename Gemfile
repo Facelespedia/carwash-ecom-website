@@ -44,7 +44,7 @@ group :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # RSpec
-  gem 'rspec-rails', '~> 3.7'
+  gem 'rspec-rails', '~> 3.8'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', '~> 3.1'
 
