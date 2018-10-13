@@ -11,7 +11,7 @@ feature 'Super Admin sign in' do
       first_name: 'Admin',
       last_name: 'Nimda',
       role_id: 1,
-      active: true,
+      active: true
     )
   end
 

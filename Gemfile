@@ -17,8 +17,8 @@ gem 'sass-rails', '~> 5.0'
 
 # Epics
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'turbolinks', '~> 5'
 gem 'fae-rails', '~> 2.0'
+gem 'turbolinks', '~> 5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

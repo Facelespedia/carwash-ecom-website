@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from fae (originally 20140822224029)
 class CreateFaeRoles < ActiveRecord::Migration[4.2]
   def change
