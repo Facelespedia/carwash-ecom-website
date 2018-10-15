@@ -59,18 +59,3 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-      
-      - deploy:
-          name: Run Heroku setup script
-          command: bash .circleci/setup-heroku.sh
-
-      - deploy:
-          name: Deploy to Staging
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              heroku git:remote --app sandbox-healhive
-              git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/sandbox-healhive.git HEAD:refs/heads/master
-              heroku run rake db:migrate
-              sleep 5  # sleep for 5 seconds to wait for dynos
-              heroku restart
-            fi
