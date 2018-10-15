@@ -66,7 +66,20 @@ jobs:
 
       - deploy:
           name: Deploy to Staging
-          command: |
+          command: 
+            - |
+            cat >~/.netrc <<EOF
+            machine api.heroku.com
+              login "narongsak.chobsri@gmail.com"
+              password "bf63277c-e77d-4627-9d2b-8cd13d50929f"
+            machine git.heroku.com
+              login "narongsak.chobsri@gmail.com"
+              password "bf63277c-e77d-4627-9d2b-8cd13d50929f"
+            EOF
+            
+            - chmod 600 ~/.netrc
+            
+            - |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
               heroku git:remote --app carwash-staging
               git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/carwash-staging.git HEAD:refs/heads/master
