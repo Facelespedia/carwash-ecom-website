@@ -69,6 +69,7 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              heroku git:remote --app carwash-staging
               git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/carwash-staging.git HEAD:refs/heads/master
               heroku run rake db:migrate
               sleep 5  # sleep for 5 seconds to wait for dynos
