@@ -21,7 +21,6 @@ jobs:
       - add_ssh_keys:  # add key from CircleCI account based on fingerprint
           fingerprints:
             - "d3:da:68:83:e5:f3:ff:e0:af:cb:80:a7:9d:70:87:46"
-            - "4a:e2:39:f1:57:ee:eb:74:86:0a:1f:02:1e:38:20:c6"
 
       - restore_cache:
           keys:
@@ -64,6 +63,8 @@ jobs:
       - deploy:
           name: Run Heroku setup script
           command: bash .circleci/setup-heroku.sh
+
+      - type: add-ssh-keys
 
       - deploy:
           name: Deploy to Staging
