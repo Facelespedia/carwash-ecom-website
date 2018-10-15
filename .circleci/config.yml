@@ -72,8 +72,7 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              echo 'heroku.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUbKek376EsJxDbM5oLpR+nFxQ6xatMalCbLtzKVhMN3yzYq/KP5AteZQhV+OIUFjbB6fhcA7Npa8dpr23WMYGOwccRUAkvQFQQ2NvgvxjXpXPBW0+DTp0jmvg/PTRIS0HAvJ4MAQvABFq33jBXq+DIvMiqsY+20krTpvTmRw7UzTAjMNd/pSKwoN4nt660WZm3/ch7RDA7g0STS4fCQhpKdhcA/+72+AVftMjTCzK/mNQ6lTwr7dTgQCNxsF0elyv4oRdRR13EIJ/LbbNMbMDVMelyQI2x1AZJk2TFXt7Le4UQAagvbGx6gHLmXhN90XeA0ulruJQiUFSOLKSNPrf narongsakjob@circleci.com' >> ~/.ssh/known_hosts
-              heroku git:remote --app carwash-staging
+              GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"               heroku git:remote --app carwash-staging
               git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/carwash-staging.git HEAD:refs/heads/master
               heroku run rake db:migrate
               sleep 5  # sleep for 5 seconds to wait for dynos
