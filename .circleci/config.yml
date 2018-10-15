@@ -20,7 +20,7 @@ jobs:
 
       - add_ssh_keys:  # add key from CircleCI account based on fingerprint
           fingerprints:
-            - "1a:f9:27:4c:ad:3e:4a:ce:78:63:f0:3f:08:c4:4c:0c"
+            - "d3:da:68:83:e5:f3:ff:e0:af:cb:80:a7:9d:70:87:46"
 
       - restore_cache:
           keys:
