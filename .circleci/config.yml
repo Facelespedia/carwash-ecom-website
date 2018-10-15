@@ -64,7 +64,9 @@ jobs:
           name: Run Heroku setup script
           command: bash .circleci/setup-heroku.sh
 
-      - type: add-ssh-keys
+      - add-ssh-keys:
+          fingerprints:
+            - "d4:87:e1:ba:b2:83:e1:e6:d4:28:34:30:96:e2:c6:f4"
 
       - deploy:
           name: Deploy to Staging
