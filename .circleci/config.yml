@@ -1,0 +1,76 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: carwash
+          RAILS_ENV: test
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: carwash
+          POSTGRES_DB: carwash_test
+          POSTGRES_PASSWORD: ""
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - add_ssh_keys:  # add key from CircleCI account based on fingerprint
+          fingerprints:
+            - "1a:f9:27:4c:ad:3e:4a:ce:78:63:f0:3f:08:c4:4c:0c"
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle exec rake db:create
+
+      - run: bundle exec rake db:schema:load
+
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+      
+      - deploy:
+          name: Run Heroku setup script
+          command: bash .circleci/setup-heroku.sh
+
+      - deploy:
+          name: Deploy to Staging
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              heroku git:remote --app sandbox-healhive
+              git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/sandbox-healhive.git HEAD:refs/heads/master
+              heroku run rake db:migrate
+              sleep 5  # sleep for 5 seconds to wait for dynos
+              heroku restart
+            fi
