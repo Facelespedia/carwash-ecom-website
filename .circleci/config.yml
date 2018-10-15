@@ -69,6 +69,7 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              echo 'heroku.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZYfd9fCkI8VqtdZ1SpLSh6/kQD+rLmsD19Tg728NgjQ+/wTZ4Y56sfrjxO5UoMsK1q7uvFoko4/54V+7uXoLPBEmdlPPClmrBahShV3PwbQqwYX8fWa7CsVKw8XuzB0qIRCO5+947k4cS/+rCCPovfGYWgMyDoyQHkfwmeK4cJPgvVDet4ogpMbFJijUwoLzDm2E6Mx78jz05ef1YrUEy/4NpiBaL0Pp1sJq7G3kKvfh4xgoIi0pRGWQzSpvJf/YCwLghBWNTd1P8Ka73W67DpoW6twaE77n6ed33UKBZuEvS+nX/gEFUkhTwra13fddVPnezeLlS1S/HcdOElVq3 Job@Narongsaks-MacBook-Pro.local' >> ~/.ssh/known_hosts
               heroku git:remote --app carwash-staging
               git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/carwash-staging.git HEAD:refs/heads/master
               heroku run rake db:migrate
