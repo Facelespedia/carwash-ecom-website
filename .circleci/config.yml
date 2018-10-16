@@ -70,7 +70,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
               git remote add heroku https://git.heroku.com/carwash-staging.git
               git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/carwash-staging.git HEAD:refs/heads/master
-              heroku run rails db:migrate
+              heroku run rake db:migrate
               sleep 5  # sleep for 5 seconds to wait for dynos
               heroku restart
             fi
