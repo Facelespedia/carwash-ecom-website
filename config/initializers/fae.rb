@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Fae.setup do |config|
-  config.devise_secret_key = '95e7b32fe0a1085a112d6d525653c06616220b7faf3695e09b606b871b39a4ae842dbe80f35043ab912ecec2efb7634e25996bc9d71da8320e9444e22e1e9510'
 
   ## devise_mailer_sender
   # This email address will get passed to Devise and
